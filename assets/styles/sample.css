@@ -1,0 +1,11 @@
+pre {
+  font-size: 4rem;
+  font-weight: bold;
+}
+span {
+  margin-left: 100px;
+}
+
+span {
+  margin-left: 1000px !important;
+}
