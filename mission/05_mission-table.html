@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>테이블 관련 스타일 미션</title>
+  </head>
+  <body>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      table {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+
+      table td,
+      table th {
+        border: 1px solid black;
+        padding: 5px;
+      }
+
+      table td {
+        width: 100px;
+        height: 80px;
+        vertical-align: top;
+      }
+
+      table td:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+
+      table th {
+        width: 100px;
+        height: 60px;
+      }
+
+      .text-red {
+        color: red;
+      }
+
+      .text-blue {
+        color: blue;
+      }
+
+      .text-gray {
+        color: lightgray;
+      }
+
+      .text-strong {
+        font-size: 30px;
+        font-weight: 800;
+      }
+    </style>
+
+    <table>
+      <caption>
+        2024
+        <span class="text-red text-strong">8</span>
+        August
+      </caption>
+
+      <tr>
+        <th class="text-red">sun</th>
+        <th>mon</th>
+        <th>tue</th>
+        <th>wed</th>
+        <th>thu</th>
+        <th>fri</th>
+        <th class="text-blue">sat</th>
+      </tr>
+
+      <tr>
+        <td class="text-gray">28</td>
+        <td class="text-gray">29</td>
+        <td class="text-gray">30</td>
+        <td class="text-gray">31</td>
+        <td>1</td>
+        <td>2</td>
+        <td class="text-blue">3</td>
+      </tr>
+      <tr>
+        <td class="text-red">4</td>
+        <td>5</td>
+        <td>6</td>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+        <td class="text-blue">10</td>
+      </tr>
+      <tr>
+        <td class="text-red">11</td>
+        <td>12</td>
+        <td>13</td>
+        <td>14</td>
+        <td class="text-red">
+          15
+          <span class="text-red text-small">광복절</span>
+        </td>
+        <td>16</td>
+        <td class="text-blue">17</td>
+      </tr>
+      <tr>
+        <td class="text-red">18</td>
+        <td>19</td>
+        <td>20</td>
+        <td>21</td>
+        <td>22</td>
+        <td>23</td>
+        <td class="text-blue">24</td>
+      </tr>
+      <tr>
+        <td class="text-red">25</td>
+        <td>26</td>
+        <td>27</td>
+        <td>28</td>
+        <td>29</td>
+        <td>30</td>
+        <td class="text-blue">31</td>
+      </tr>
+    </table>
+  </body>
+</html>
