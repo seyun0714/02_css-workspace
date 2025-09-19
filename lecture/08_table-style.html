@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>테이블 관련 스타일</title>
+  </head>
+  <body>
+    <style>
+      #user-list {
+        border: 1px solid black;
+        /* 셀간격 */
+        border-spacing: 0;
+        border-spacing: 10px 5px;
+        /* 셀 간격 분리 여부 */
+        border-collapse: collapse;
+      }
+
+      #user-list td {
+        border-bottom: 1px solid lightgray;
+        width: 100px;
+        padding: 10px;
+        text-align: center;
+      }
+
+      #user-list > thead td,
+      #user-list > tfoot td {
+        font-weight: 900;
+        padding: 10px;
+      }
+
+      #user-list > tbody > tr:hover {
+        background-color: lightblue;
+        cursor: pointer;
+      }
+    </style>
+
+    <table id="user-list">
+      <thead>
+        <tr>
+          <td>회원번호</td>
+          <td>회원명</td>
+          <td>포인트</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>고길동</td>
+          <td>100</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>고사리</td>
+          <td>200</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>고라니</td>
+          <td>300</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="2">포인트 합계</td>
+          <td>600</td>
+        </tr>
+      </tfoot>
+    </table>
+  </body>
+</html>
