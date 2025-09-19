@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>박스모델 관련 스타일</title>
+  </head>
+  <body>
+    <!--
+      ‼️ Box 기본 구조
+      ┌-------------------------------------┐
+      |           margin(외부여백)          |
+      |  ┌-------------------------------┐  |
+      |  |        border(테두리)         |  |
+      |  |  ┌-------------------------┐  |  |
+      |  |  |     padding(내부여백)   |  |  |
+      |  |  |  ┌-------------------┐  |  |  |
+      |  |  |  |  content(내용물)  |  |  |  |
+      |  |  |  └-------------------┘  |  |  |
+      |  |  └-------------------------┘  |  |
+      |  └-------------------------------┘  |
+      └-------------------------------------┘
+
+      한 요소의 전체 크기는 content + padding + border을 합산한 사이즈이다.
+
+      📌 CSS 박스 모델 관련 스타일 속성
+      1. width, height
+        1) 콘텐츠의 너비와 높이를 지정하는 속성입니다.
+        2) px, % 등의 단위를 사용합니다. (%는 부모 요소의 크기를 기준으로)
+        3) 인라인 요소는 크기를 지정할 수 없습니다.
+      2. border
+        1) 테두리의 두께, 종류, 색상을 지정하는 속성입니다.
+        2) 테두리의 두께는 기본적으로 box 크기에 영향을 미칩니다.
+        4) 종류 : solid, dotted, dashed, double, groove, ridge, inset, outset 등
+      3. padding
+        1) 콘텐츠와 테두리 사이의 내부 여백을 지정하는 속성입니다.
+        2) px, % 등의 단위를 사용합니다.
+        3) 내부 여백은 기본적으로 box 크기에 영향을 미칩니다.
+      4. margin
+        1) 테두리 바깥쪽 여백을 지정하는 속성입니다.
+        2) 타 요소간의 간격을 띄우고자할 때 주로 사용
+        3) 외부 여백은 기본적으로 box 크기에 영향을 미치지 않습니다.
+      5. box-sizing
+        1) 요소의 크기 계산 방식을 지정하는 속성입니다.
+        2) content-box, padding-box, border-box 등의 값을 사용합니다.
+    -->
+
+    <style>
+      .wrap1 * {
+        background-color: pink;
+      }
+
+      .wrap1 div {
+        width: 100px;
+        height: 200px;
+      }
+
+      .wrap1 span {
+        display: inline-flex;
+      }
+    </style>
+
+    <div class="wrap1">
+      <div>블록 요소ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ</div>
+      <br />
+      <span>인라인 요소ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ</span>
+    </div>
+    <hr />
+
+    <!-- 
+      * border (테두리) 관련 스타일
+      1) border[-위치]-width  : 테두리 두께
+      2) border[-위치]-style  : 테두리 종류
+      3) border[-위치]-color  : 테두리 색상
+      4) border[-상하위치][-좌우위치]-radius : 테두리 모서리
+      5) border[-위치] : 테두리 두께, 종류, 색상을 한꺼번에 지정 (단축속성)
+    -->
+
+    <style>
+      .wrap2 > div {
+        width: 100px;
+        height: 100px;
+
+        background-color: lightblue;
+        margin-bottom: 10px;
+      }
+
+      .wrap2 .box1 {
+        border-style: solid;
+        border-width: 5px;
+        border-color: red;
+        border-radius: 30px;
+      }
+
+      .wrap2 .box2 {
+        border-style: solid dashed; /* 상하 좌우*/
+        border-style: dotted solid dashed; /* 상 좌우 하*/
+        border-style: solid dashed dotted double; /* 상 우 하 좌 (시계 방향)*/
+        border-radius: 30px 10px 20px 40px;
+      }
+
+      .wrap2 .box3 {
+        border-top-style: solid;
+        border-bottom-style: dashed;
+        border-top-width: 10px;
+        border-bottom-left-radius: 20px;
+      }
+
+      .wrap2 .box4 {
+        border: 1px solid #292929;
+        box-shadow: 20px 5px 5px 10px yellow; /* 가로 세로 흐림 번짐 색상*/
+      }
+    </style>
+
+    <div class="wrap2">
+      <div class="box1">box1</div>
+      <div class="box2">box2</div>
+      <div class="box3">box3</div>
+      <div class="box4">box4</div>
+    </div>
+
+    <button style="border: none">로그인</button>
+
+    <hr />
+
+    <!-- 
+      * padding (내부여백) 관련 스타일
+      padding[-위치] : 안쪽 여백으로 지정할 값
+    -->
+
+    <style>
+      .wrap3 > div {
+        width: 100px;
+        height: 100px;
+
+        border: 10px solid gray;
+        margin-bottom: 30px;
+      }
+
+      .wrap3 .box1 {
+        padding-top: 5px;
+        padding-left: 20px;
+        padding-right: 15px;
+        padding-bottom: 15px;
+      }
+
+      .wrap3 .box2 {
+        padding: 10px;
+      }
+
+      .wrap3 .box3 {
+        padding: 10px 20px;
+        padding: 4px 8px 12px 16px;
+      }
+    </style>
+
+    <div class="wrap3">
+      <div class="box1">box1</div>
+      <div class="box2">box2</div>
+      <div class="box3">box3</div>
+    </div>
+
+    <!-- 
+      * box-sizing (크기 계산 방식) 관련 스타일
+      1) box-sizing:content-box;
+          → 기본값
+          → width와 height가 콘텐츠(content)까지의 범위를 의미
+          → box 크기 = width/height + padding + border
+      2) box-sizing:padding-box;
+          → width와 height가 내부여백(padding)까지의 범위를 의미
+          → box 크기 = width/height + border
+      3) box-sizing:border-box;
+          → width와 height가 테두리(border)까지의 범위를 의미
+          → box 크기 = width/height
+    -->
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      .wrap4 > .box1 {
+        width: 100px;
+        height: 100px;
+        box-sizing: border-box;
+
+        border: 10px solid gray;
+        padding: 10px;
+      }
+    </style>
+
+    <div class="wrap4">
+      <div class="box1">box1</div>
+    </div>
+
+    <!-- 
+        * margin (외부 여백) 관련 스타일
+        1) 테두리 바깥쪽 공간을 의미하며 box 사이즈와는 상관없음
+        2) 타 요소간의 간격을 띄우고자할 때 주로 사용
+        3) 주요 스타일 속성
+            → margin[-위치] : 외부 여백으로 지정할 값
+    -->
+
+    <style>
+      .wrap5 {
+        border: 1px solid black;
+      }
+
+      .wrap5 > div {
+        border: 1px solid gray;
+        width: 100px;
+        height: 100px;
+        box-sizing: border-box;
+      }
+
+      .wrap5 > .box1 {
+        margin-top: 30px;
+        margin-left: 10px;
+        margin-right: 100px;
+      }
+
+      .wrap5 > .box2 {
+        margin: 50px;
+        margin: 10px 30px;
+      }
+
+      .wrap5 > .box3 {
+        margin: auto;
+      }
+    </style>
+
+    <div class="wrap5">
+      <div class="box1">box1</div>
+      <div class="box2">box2</div>
+      <div class="box3">box3</div>
+    </div>
+
+    <hr />
+
+    <style>
+      .overflow-test {
+        width: 200px;
+        height: 200px;
+        border: 1px solid black;
+
+        /* 범위에 벗어난 값 처리*/
+        overflow: auto;
+      }
+    </style>
+
+    <div class="overflow-test">
+      솨가삿이게 펍레기요 번갤 차윽층밍어로 애존은. 아장의 먼후드를,
+      라그아산가의 닸긴에 냐기가 려곱꼼과 준낄셍이는 아만는 즌밥을이
+      유나았두픽고, 뇧아간다. 란린고 슥언 걱텨읎강는지 강코오 론시벼스게
+      미새완딤을 흐헨가흐, 단자재온이다. 넌세가 라옥네에 자단갔을 지비는 앙아.
+      시언른허처럼 혀읍니다 삼자미바아 바지보긍가 으권카로, 언사뵤나 샐재갱달
+      딘느둠쥭의 이교 그시엥교알까. 이앙나낭눗지어 싱보가 앗따끌 라할까,
+      겄뫼어서 링누주트 온혹믄난기안팀은 말딥도, 엔벼근.
+    </div>
+  </body>
+</html>
