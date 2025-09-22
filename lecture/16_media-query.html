@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>미디어 쿼리</title>
+  </head>
+  <body>
+    <!-- 
+      📌 Media Query란?
+      1. 미디어의 종류와 크기에 따라서 레이아웃을 다르게 구성할 수 있도록 도와주는 기능입니다.
+      2. 사용 이유 : 다양한 기기에 대응하기 위해서
+      3. 선언 : @media 종류 (조건) { 스타일 }
+      4. 종류 : screen(기본값), print, all 
+      5. 조건 
+        1) width: 100px;           너비가 정확히 100px인 경우
+        2) min-width: 100px;       너비가 100px 이상인 경우(최소 너비가 100px)
+        3) max-width: 100px;       너비가 100px 이하인 경우(최대 너비가 100px)
+        4) orientation: portrait;  화면을 세운 경우
+        5) orientation: landscape; 화면을 눕힌 경우
+
+      일반적으로 태블릿 : 768px / 모바일: 480px
+    -->
+
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      .wrap {
+        width: 100vw;
+        border: 1px dashed #aaa;
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        padding: 10px;
+      }
+
+      .wrap > .item {
+        padding: 10px;
+        width: 25%;
+        border: 1px solid #000;
+        background-color: palegoldenrod;
+      }
+
+      /* 768px 이하인 경우 2행 2열로 */
+      @media (max-width: 768px) {
+        .wrap {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .wrap > .item {
+          background-color: oldlace;
+          width: 48%;
+        }
+      }
+
+      /* 480px 이하인 경우 4행 1열로 */
+      @media (max-width: 480px) {
+        .wrap {
+          flex-direction: column;
+        }
+
+        .wrap > .item {
+          width: 100%;
+          background-color: mediumvioletred;
+        }
+      }
+    </style>
+
+    <div class="wrap">
+      <div class="item">item1</div>
+      <div class="item">item2</div>
+      <div class="item">item3</div>
+      <div class="item">item4</div>
+    </div>
+  </body>
+</html>
