@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .app {
+        display: grid;
+        grid-template-columns: 200px 1fr 200px;
+        grid-template-rows: 50px 1fr 50px;
+        grid-template-areas: "h h h" "nav main aside" "f f f";
+
+        gap: 10px;
+        width: 100vw;
+        min-height: 100vh;
+      }
+
+      .header,
+      .footer {
+        /* width: 100%; */
+        background-color: #1f1f1b;
+        color: #fafaf8;
+        padding: 16px;
+      }
+
+      .header {
+        grid-area: h;
+      }
+
+      .footer {
+        grid-area: f;
+      }
+
+      .nav,
+      .aside {
+        display: flex;
+        flex-direction: column;
+        width: 200px;
+        gap: 8px;
+        padding: 12px;
+        background-color: #f9fafb;
+      }
+
+      .nav {
+        grid-area: nav;
+        border: 1px solid #aaa;
+      }
+
+      .aside {
+        grid-area: aside;
+        border: 1px solid #aaa;
+      }
+
+      .main {
+        flex: 1;
+        padding: 16px;
+        background-color: #fafaf8;
+        grid-area: main;
+        border: 1px solid #aaa;
+      }
+
+      .content > * {
+        border: 1px solid #e5e7eb;
+      }
+
+      .box {
+        background-color: rgb(232, 238, 255);
+        border: 1px dashed rgb(164, 185, 247);
+        margin: 12px 0;
+        padding: 12px;
+      }
+
+      .nav > ul {
+        padding-left: 20px;
+        list-style-position: outside;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <div class="header">머리부 (Header)</div>
+      <div class="nav">
+        <strong>네비게이션 (Nav)</strong>
+        <ul>
+          <li>Home</li>
+          <li>About</li>
+          <li>Contact</li>
+        </ul>
+      </div>
+      <div class="main">
+        <h1>메인 콘텐츠 (Main)</h1>
+        <div class="box">양옆은 고정폭, 가운데는 가변폭!</div>
+        <p>
+          Hint. 가운데 영역은 <code>flex: 1</code>로 남는 공간을 차지합니다.
+        </p>
+      </div>
+      <div class="aside">
+        <strong>사이드바 (Aside)</strong>
+        <p>공지/광고/프로필 등</p>
+      </div>
+      <div class="footer">바닥부 (Footer)</div>
+    </div>
+  </body>
+</html>
