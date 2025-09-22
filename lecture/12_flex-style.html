@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>flex 관련 스타일</title>
+  </head>
+  <body>
+    <!-- 
+      📌 FlexBox
+      1. CSS 레이아웃 모델 중 하나입니다.
+      2. 컨테이너 안의 아이템들을 효율적으로 배치, 정렬 등의 작업을 할 수 있도록 합니다.
+      3. 기존 레이아웃 기술 float, display, position 등의 복잡성 및 한계 극복을 위해 도입되었습니다.
+      4. 기본 개념
+          → 1차원 레이아웃 모델 : 한 번에 한 방향으로 아이템들을 배치하는 방식
+      5. 구성 요소
+        1) flex container
+            → display: flex를 지정한 요소
+        2) flex item
+            → flex container 내부의 자식 요소
+    -->
+
+    <!-- 
+      * display: flex; 
+      1) 부모 컨테이너에 display: flex; 설정시 자식 컨테이너들은 flexable item이 됨 
+      2) 용어
+          → 부모 : flex container
+          → 자식 : flex item
+      3) 기본 축
+          → 메인 축(X축) : 수평 방향, main axis
+          → 교차 축(Y축) : 수직 방향, cross axis
+    -->
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      div {
+        border: 1px solid brown;
+      }
+
+      .wrap1 {
+        width: 600px;
+        height: 200px;
+        /* 기본적으로 x축 방향으로 item들을 정렬 */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .wrap1 > .box {
+        width: 50px;
+        height: 50px;
+      }
+    </style>
+
+    <div class="wrap1">
+      <div class="box">box1</div>
+      <div class="box">box2</div>
+      <div class="box">box3</div>
+    </div>
+
+    <!-- 
+      * flex-direction 
+        → item들의 배치 방향을 변경하는 스타일 속성 
+
+      1) flex-direction: row;            수평 방향(기본값)
+      2) flex-direction: row-reverse;    수평 역방향
+      3) flex-direction: column;         수직 방향
+      4) flex-direction: column-reverse; 수직 역방향
+
+      수평방향일 경우 메인축(X축), 교차축(Y축) 으로 지정
+      수직방향일 경우 메인축(Y축), 교차축(X축) 으로 지정
+    -->
+
+    <style>
+      .wrap2 {
+        width: 200px;
+        height: 200px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .wrap2 > .box {
+        width: 50px;
+        height: 50px;
+      }
+    </style>
+
+    <div class="wrap2">
+      <div class="box">box1</div>
+      <div class="box">box2</div>
+      <div class="box">box3</div>
+    </div>
+
+    <!-- 
+      * flex-wrap 
+        → flex item들이 컨테이너 범위에 벗어날 경우 처리할 방법 지정
+
+      1) flex-wrap: nowrap; (기본값)
+          → flex item들을 single-line으로 배치함 
+          → flex container 밖으로 나갈 수 있음 
+          → flex item의 크기가 변경될 수 있음
+      2) flex-wrap: wrap;
+          → flex item들을 multi-line으로 배치함 
+          → flex container 밖으로 나갈 수 없음
+          → flex item의 크기가 유지됨
+    -->
+
+    <style>
+      .wrap3 {
+        display: flex;
+        flex-wrap: wrap;
+        width: 200px;
+        height: 300px;
+        border: 1px solid black;
+      }
+
+      .wrap3 > .box {
+        border: 5px solid gold;
+        width: 80px;
+        height: 80px;
+      }
+    </style>
+
+    <div class="wrap3">
+      <div class="box">box1</div>
+      <div class="box">box2</div>
+      <div class="box">box3</div>
+      <div class="box">box4</div>
+      <div class="box">box5</div>
+      <div class="box">box6</div>
+    </div>
+
+    <!-- 
+      * flex-flow
+        → flex-direction 과 flex-wrap 속성을 함께 표기할 수 있는 단축 속성
+    -->
+
+    <!-- 
+      * justify-content 
+        → 메인축(direction이 row일 경우 X축, column일 경우 Y축) 정렬
+      
+      1) justify-content: flex-start;    : item들이 시작 지점에 모임
+      2) justify-content: flex-end;      : item들이 종료 지점에 모임
+      3) justify-content: center;        : item들이 가운데 지점에 모임
+      4) justify-content: space-between; : item들 사이에 공백 추가
+      5) justify-content: space-around;  : item들 마다 앞 뒤에 공백 추가
+      6) justify-content: space-evenly;  : item들 사이에 균일한 공백 추가
+    -->
+
+    <!-- 
+      * align-items 
+        → 교차축(direction이 row일 경우 Y축, column일 경우 X축) 정렬
+
+      1) align-items: flex-start;   
+      2) align-items: flex-end;
+      3) align-items: center;
+      4) align-items: stretch;      : 교차축 방향으로 item 크기가 늘어남
+      5) align-items: baseline;     : 베이스라인 기준으로 정렬
+    -->
+
+    <!-- 
+      * flex-basis 
+        → item 요소의 기본길이 
+
+      * flex-grow 
+        → container 사이즈가 커질수록 item의 사이즈도 같이 커지게 할건지 여부
+      1) flex-grow: 0;      : 기본값, flex-basis보다 더이상 커지지 않겠다는걸 의미
+      2) flex-grow: 1;      : container 사이즈가 커질수록 item 사이즈도 같이 커짐
+
+      * flex-shrink 
+        → container 사이즈가 작아질수록 item의 사이즈도 같이 작아지게 할건지 여부
+      1) flex-shrink: 0;    : flex-basis보다 더이상 작아지지 않겠다는걸 의미
+      2) flex-shrink: 1;    : 기본값, container 사이즈가 작아질수록 item 사이즈도 같이 작아짐
+
+      * flex 
+        → flex-grow, flex-shrink, flex-basis를 한번에 지정하는 단축 속성
+        flex: grow shrink basis;
+    -->
+  </body>
+</html>
